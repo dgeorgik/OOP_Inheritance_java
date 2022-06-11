@@ -1,0 +1,31 @@
+
+public class Hero {
+    protected String username;
+    protected int level;
+    public Hero (String name, int lvl) throws IllegalArgumentException {
+        setUsername(name);
+        setLevel(lvl);
+    }
+    public String action() {
+        return "";
+    }
+    protected String getUsername() {
+        return username;
+    }
+    protected void setUsername(String username) throws IllegalArgumentException {
+        if (username.length() < 5) {
+            throw new IllegalArgumentException("Wrong value to hero's username");
+        }
+        this.username = username;
+    }
+    protected int getLevel() {
+        return level;
+    }
+    protected void setLevel(int level) throws IllegalArgumentException {
+        if (level < 0) {
+            throw new IllegalArgumentException("Wrong value to hero's level");
+        }
+        this.level = level;
+    }
+
+}
