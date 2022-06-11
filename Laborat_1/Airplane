@@ -1,1 +1,64 @@
 
+public class Airplane extends Vehicle {
+
+    private int wingsCount;
+    private int enginesNumber;
+    private boolean isHydroplane;
+
+    public Airplane(int passengers, int wings, int engines, boolean isHydro) {
+        super(passengers);
+        setWingsCount(wings);
+        setEnginesNumber(engines);
+        setHydroplane(isHydro);
+    }
+
+    public String toString() {
+        if (this.isHydroplane() == false) {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("In an Airplane ").append( getPassengers()).append(" passengers")
+                    .append(System.lineSeparator()).append("With ").append( getWingsCount()).append(" wings and ")
+                    .append(this.getEnginesNumber()).append(" engines");
+            return sb.toString();
+        } else  {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("In an Hydroplane ").append( getPassengers()).append(" passengers")
+                    .append(System.lineSeparator()).append("With ").append( getWingsCount()).append(" wings and ")
+                    .append( getEnginesNumber()).append(" engines");
+            return sb.toString();
+        }
+    }
+
+    public int getWingsCount() {
+        return wingsCount;
+    }
+
+    private void setWingsCount(int wingsCount) throws IllegalArgumentException {
+        if (wingsCount < 0) {
+            throw new IllegalArgumentException("Ivalid negative number");
+        } else if (wingsCount < 1) {
+            throw new IllegalArgumentException("Need wings to fly");
+        }
+        this.wingsCount = wingsCount;
+    }
+
+    public int getEnginesNumber() {
+        return enginesNumber;
+    }
+
+    private void setEnginesNumber(int enginesNumber) throws IllegalArgumentException {
+        if (enginesNumber < 0) {
+            throw new IllegalArgumentException("Ivalid negative number");
+        } else if (!(enginesNumber >= 0 && enginesNumber <= 8 || enginesNumber == 10 || enginesNumber == 12)) {
+            throw new IllegalArgumentException("Invalid engines number");
+        }
+        this.enginesNumber = enginesNumber;
+    }
+
+    public boolean isHydroplane() {
+        return isHydroplane;
+    }
+
+    private void setHydroplane(boolean isHydroplane) {
+        this.isHydroplane = isHydroplane;
+    }
+}
