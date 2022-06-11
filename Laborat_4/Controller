@@ -1,1 +1,85 @@
+import java.util.Scanner;
 
+public class Controller {
+
+    public static void main(String[] args) {
+        try {
+            Scanner scan = new Scanner (System.in);
+            String [] firstInteraction = scan.nextLine().split(" ");
+            boolean gameInProcess = false;
+            if (firstInteraction[0].equals("Create")) {
+                if (firstInteraction[1].equals("Wizard")) {
+                    Wizard wiz = new Wizard (firstInteraction[2], Integer.parseInt(firstInteraction[3]),
+                            Integer.parseInt(firstInteraction[4]), Integer.parseInt(firstInteraction[5]));
+                    gameInProcess = true;
+                    System.out.println("Wizard  " + wiz.getUsername() + "[" + wiz.getLevel() + " level] is online");
+                    while (gameInProcess) {
+                        Scanner scan1 = new Scanner (System.in);
+                        String temp = scan1.nextLine();
+                        if (temp.equals("Action")) {
+                            System.out.println(wiz.action());
+                            continue;
+                        } else if (temp.equals("End")) {
+                            System.out.println("Wizard " + wiz.getUsername() + " [" + wiz.getLevel() + " level] "
+                                    + "is offline");
+                            gameInProcess = false;
+                        } else {
+                            System.out.println("Неизвестная команда");
+                            continue;
+                        }
+                    }
+                } else if (firstInteraction[1].equals("Elf")) {
+                    Elf elf = new Elf (firstInteraction[2], Integer.parseInt(firstInteraction[3]),
+                            Integer.parseInt(firstInteraction[4]));
+                    gameInProcess = true;
+                    System.out.println("Elf " + elf.getUsername() + "[" + elf.getLevel() + " level] is online");
+                    while (gameInProcess) {
+                        Scanner scan1 = new Scanner (System.in);
+                        String temp = scan1.nextLine();
+                        if (temp.equals("Action")) {
+                            System.out.println(elf.action());
+                            continue;
+                        } else if (temp.equals("End")) {
+                            System.out.println("Elf " + elf.getUsername() + " [" + elf.getLevel() + " level] "
+                                    + "is offline");
+                            gameInProcess = false;
+                        } else {
+                            System.out.println("Неизвестная команда");
+                            continue;
+                        }
+                    }
+                } else if (firstInteraction[1].equals("Knight")) {
+                    Knight knight = new Knight (firstInteraction[2], Integer.parseInt(firstInteraction[3]),
+                            Integer.parseInt(firstInteraction[4]), Integer.parseInt(firstInteraction[5]));
+                    gameInProcess = true;
+                    System.out.println("Knight " + knight.getUsername() + "[" + knight.getLevel() + " level] is online");
+                    while (gameInProcess) {
+                        Scanner scan1 = new Scanner (System.in);
+                        String temp = scan1.nextLine();
+                        if (temp.equals("Action")) {
+                            System.out.println(knight.action());
+                            continue;
+                        } else if (temp.equals("End")) {
+                            System.out.println("Knight " + knight.getUsername() + " [" + knight.getLevel() + " level] "
+                                    + "is offline");
+                            gameInProcess = false;
+                        } else {
+                            System.out.println("Неизвестная команда");
+                            continue;
+                        }
+                    }
+                } else {
+                    System.out.println("Введено неизвестное название класса");
+                }
+
+            } else {
+                System.out.println("Введена неправильная инициирующая команда, должна быть Create");
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            //e.printStackTrace();
+        }
+    }
+
+}
