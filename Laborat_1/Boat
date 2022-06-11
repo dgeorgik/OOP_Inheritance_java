@@ -1,0 +1,29 @@
+public class Boat extends Vehicle {
+    private int oarsCount;
+
+    public Boat(int passengers, int oars) {
+        super(passengers);
+        setOarsCount(oars);
+    }
+
+    public String toString() {
+        return "In a Boat " + getPassengers() + " passengers\r\nWith " + getOarsCount() + " oars";
+
+    }
+
+    public int getOarsCount() {
+        return oarsCount;
+    }
+
+    private void setOarsCount(int oarsCount) throws IllegalArgumentException {
+        if (oarsCount < 0) {
+            throw new IllegalArgumentException("Ivalid negative number");
+        } else if (oarsCount == 0) {
+            throw new IllegalArgumentException("Need oars to swim");
+        } else if (oarsCount > super.getPassengers() * 2) {
+            throw new IllegalArgumentException("Too many oars");
+        }
+        this.oarsCount = oarsCount;
+    }
+
+}
