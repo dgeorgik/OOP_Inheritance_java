@@ -1,0 +1,12 @@
+import java.text.DecimalFormat;
+
+public class Rhombus extends Parallelogram {
+    public Rhombus (int[] sides) {
+        super(sides);
+    }
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("###.00");
+        return "Rhombus contains " + getSidesCount() + " equal sides" + "\r\nIts perimeter is "
+                + df.format(getPerimeter());
+    }
+}
