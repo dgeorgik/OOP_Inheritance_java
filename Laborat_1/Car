@@ -1,0 +1,36 @@
+public class Car extends Vehicle {
+    private int horsePower;
+    private String model;
+    public Car (int passengers, int horsePower, String model){
+        super(passengers);
+        setHorsePower(horsePower);
+        setModel(model);
+    }
+
+    public String toString () {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("In a Car ").append(super.getPassengers()).append(" passengers").append(System.lineSeparator())
+                .append("With ").append(this.getHorsePower()).append(" horse power on ").append(this.getModel());
+        return sb.toString();
+    }
+
+    public int getHorsePower() {
+        return horsePower;
+    }
+    private void setHorsePower(int horsePower) throws IllegalArgumentException{
+        if (horsePower < 0) {
+            throw new IllegalArgumentException("Invalid negative number");
+        }
+        this.horsePower = horsePower;
+    }
+    public String getModel() {
+        return model;
+    }
+    private void setModel(String model) throws IllegalArgumentException{
+        if (model.length() < 2 ) {
+            throw new IllegalArgumentException("Invalid short value");
+        }
+        this.model = model;
+    }
+
+}
