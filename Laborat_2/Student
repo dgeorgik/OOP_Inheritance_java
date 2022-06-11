@@ -1,0 +1,25 @@
+public class Student extends Human {
+    private String facultyNumber;
+
+    public Student(String first, String last, String faculty) {
+        super(first, last);
+        setFacultyNumber(faculty);
+    }
+
+    public String toString () {
+        return "First Name :" + getFirstName() + "\r\nLast name: " + getLastName() + "\r\nFaculty number: "
+                + getFacultyNumber();
+    }
+
+    public String getFacultyNumber() {
+        return facultyNumber;
+    }
+
+    protected void setFacultyNumber(String facultyNumber) throws IllegalArgumentException {
+        if (facultyNumber.length() < 5 || facultyNumber.length() > 10) {
+            throw new IllegalArgumentException("Invalid faculty number");
+        }
+        this.facultyNumber = facultyNumber;
+    }
+
+}
