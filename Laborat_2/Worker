@@ -1,0 +1,51 @@
+import java.text.DecimalFormat;
+
+public class Worker extends Human {
+    private double weekSalary;
+    private double workHoursPerDay;
+
+    public Worker(String first, String last, double salary, double hours) {
+        super(first, last);
+        setWeekSalary(salary);
+        setWorkHoursPerDay(hours);
+    }
+
+    public String toString() {
+        //System.out.println(String.format( "%.2f", getWeekSalary() / (getWorkHoursPerDay() * 7)));
+        DecimalFormat df = new DecimalFormat("###.00");
+        return "First Name :" + getFirstName() + "\r\nLast name: " + getLastName() + "\r\nWeek salary: "
+                + df.format(getWeekSalary()) + "\r\nHours per day: " + df.format(getWorkHoursPerDay())
+                + "\r\nSalary per hour: " + df.format(getWeekSalary() / (getWorkHoursPerDay() * 7));
+
+    }
+
+    public double getWeekSalary() {
+        return weekSalary;
+    }
+
+    private void setWeekSalary(double weekSalary) {
+        if (weekSalary < 10) {
+            throw new IllegalArgumentException("Expected value mismatch! Argument: weekSalary");
+        }
+        this.weekSalary = weekSalary;
+    }
+
+    public double getWorkHoursPerDay() {
+        return workHoursPerDay;
+    }
+
+    private void setWorkHoursPerDay(double workHoursPerDay) throws IllegalArgumentException {
+        if (workHoursPerDay < 1 || workHoursPerDay > 12) {
+            throw new IllegalArgumentException("Expected value mismatch! Argument: workHoursPerDay");
+        }
+        this.workHoursPerDay = workHoursPerDay;
+    }
+
+    protected void setLastName(String last) throws IllegalArgumentException {
+        if (last.length() < 4) {
+            throw new IllegalArgumentException("Expected length more than 3 symbols! Argument: lastName");
+        }
+        super.setLastName(last);
+    }
+
+}
