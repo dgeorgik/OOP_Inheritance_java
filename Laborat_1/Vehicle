@@ -1,0 +1,18 @@
+public class Vehicle {
+    private int passengers;
+    public Vehicle (int passengers) throws IllegalArgumentException{
+        setPassengers(passengers);
+    }
+
+    public int getPassengers() {
+        return passengers;
+    }
+    private void setPassengers(int passengers) throws IllegalArgumentException {
+        if (passengers < 0) {
+            throw new IllegalArgumentException("Invalid negative number");
+        } else if (passengers == 0) {
+            throw new IllegalArgumentException("Need passengers to drive");
+        }
+        this.passengers = passengers;
+    }
+}
