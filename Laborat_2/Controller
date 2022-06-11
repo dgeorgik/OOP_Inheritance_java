@@ -1,1 +1,24 @@
+import java.util.Scanner;
 
+public class Controller {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String[] s_stud = scan.nextLine().split(" ");
+        String[] s_worker = scan.nextLine().split(" ");
+        try {
+
+            Student stud = new Student(s_stud[0], s_stud[1], s_stud[2]);
+
+            Worker worker = new Worker(s_worker[0], s_worker[1], Double.parseDouble(s_worker[2]),
+                    Double.parseDouble(s_worker[3]));
+            System.out.println(stud.toString());
+            System.out.println(worker.toString());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            // e.printStackTrace();
+        }
+
+    }
+
+}
