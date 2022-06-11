@@ -1,0 +1,33 @@
+public class Elf extends Hero {
+    protected int arrowsCount;
+    public Elf (String name, int lvl, int arrows) {
+        super(name, lvl);
+        setArrowsCount(arrows);
+    }
+    protected boolean shootArrow() {
+        if (arrowsCount > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public String action() {
+        if (shootArrow()) {
+            arrowsCount = arrowsCount - 1;
+            return "" + getUsername() + " shoot arrow";
+        } else {
+            return "" + getUsername() + " has no more arrows";
+        }
+
+    }
+    protected int getArrowsCount() {
+        return arrowsCount;
+    }
+    protected void setArrowsCount(int arrowsCount) throws IllegalArgumentException{
+        if (arrowsCount < 0 || arrowsCount > 100) {
+            throw new IllegalArgumentException("Wrong value to elf's arrows count");
+        }
+        this.arrowsCount = arrowsCount;
+    }
+
+}
