@@ -1,0 +1,55 @@
+import java.text.DecimalFormat;
+
+public class Polygon {
+    protected int[] sides;
+
+    public Polygon(int[] sides) throws IllegalArgumentException {
+        setSides(sides);
+    }
+
+    public String toString () {
+        DecimalFormat df = new DecimalFormat("###.00");
+        return "Polygon contains " + getSidesCount() + " sides\r\nIts perimeter is " + df.format(getPerimeter());
+    }
+
+    protected int getSidesCount() {
+        return sides.length;
+    }
+
+    protected double getPerimeter() {
+        double perim = 0;
+        for (int i = 0; i < sides.length; i++) {
+            perim = perim + sides[i];
+
+        }
+
+        return perim;
+    }
+
+    protected int[] getSides() {
+        return sides;
+    }
+
+    protected void setSides(int[] sides) throws IllegalArgumentException {
+        if (sides.length < 3 && sides.length != 1) {
+            throw new IllegalArgumentException("Invalid value to sides number");
+        }
+        for (int i = sides.length - 1; i >= 0; i--) {
+            double sum = 0;
+            for (int j = 0; j < sides.length; j++) {
+                sum = sum + sides[j];
+            }
+            if (sides[i] <= 0) {
+                throw new IllegalArgumentException("Negative value to side length " + sides[i]);
+            }
+            if (sides.length != 1) {
+                if (sides[i] > sum - sides[i]) {
+                    throw new IllegalArgumentException("Wrong value to side length " + sides[i]);
+                }
+            }
+
+        }
+        this.sides = sides;
+    }
+
+}
