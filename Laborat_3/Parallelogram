@@ -1,0 +1,11 @@
+import java.text.DecimalFormat;
+
+public class Parallelogram extends Quadrilateral {
+    public Parallelogram (int[] sides) {
+        super(sides);
+    }
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("###.00");
+        return "Parallelogram contains two pairs of parallel sides" + "\r\nIts perimeter is " + df.format(getPerimeter());
+    }
+}
