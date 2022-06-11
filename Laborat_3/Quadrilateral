@@ -1,0 +1,11 @@
+import java.text.DecimalFormat;
+
+public class Quadrilateral extends Polygon {
+    public Quadrilateral (int [] sides) {
+        super(sides);
+    }
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("###.00");
+        return "Quadrilateral contains " + getSidesCount() + " sides\r\nIts perimeter is " + df.format(getPerimeter());
+    }
+}
