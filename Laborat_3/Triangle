@@ -1,0 +1,16 @@
+import java.text.DecimalFormat;
+
+public class Triangle extends Polygon {
+    public Triangle (int[] sides) {
+        super(sides);
+    }
+    protected double getInRadius () {
+        double halfPerim = getPerimeter()/2;
+        return Math.sqrt(((halfPerim - sides[0]) * (halfPerim - sides[1]) * (halfPerim - sides[2]))/halfPerim);
+    }
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("###.00");
+        return "Triangle contains " + getSidesCount() + " sides\r\nIts perimeter is " + df.format(getPerimeter()) +
+                "\r\nIts radius of incircle is " + df.format(getInRadius());
+    }
+}
