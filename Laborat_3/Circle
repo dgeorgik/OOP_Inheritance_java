@@ -1,1 +1,19 @@
+import java.text.DecimalFormat;
+
+public class Circle extends Polygon {
+    public Circle (int[] sides) {
+        super(sides);
+    }
+    protected double getPerimeter() {
+        return 2 * sides[0] * Math.PI;
+    }
+    protected double getArea () {
+        return Math.pow(sides[0], 2) * Math.PI;
+    }
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("###.00");
+        return "Circle radius is " + sides[0] + "\r\nIts perimeter is " + df.format(getPerimeter()) + "\r\nIt's area is "
+                + df.format(getArea());
+    }
+}
 
