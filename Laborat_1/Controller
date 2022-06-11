@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Controller {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String[] vehicleInfoSplit = scan.nextLine().split(" ");
+        if (vehicleInfoSplit[0].equals("Car")) {
+            try {
+                Car car = new Car(Integer.parseInt(vehicleInfoSplit[1]), Integer.parseInt(vehicleInfoSplit[2]),
+                        vehicleInfoSplit[3]);
+                System.out.println(car.toString());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (vehicleInfoSplit[0].equals("Boat")) {
+            try {
+                Boat boat = new Boat(Integer.parseInt(vehicleInfoSplit[1]), Integer.parseInt(vehicleInfoSplit[2]));
+                System.out.println(boat.toString());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if (vehicleInfoSplit[0].equals("Airplane")) {
+            boolean isHydro = true;
+            if (vehicleInfoSplit[4].equals("true")) {
+                isHydro = true;
+            } else if (vehicleInfoSplit[4].equals("false")) {
+                isHydro = false;
+            }
+            try {
+                Airplane air = new Airplane(Integer.parseInt(vehicleInfoSplit[1]),
+                        Integer.parseInt(vehicleInfoSplit[2]), Integer.parseInt(vehicleInfoSplit[3]), isHydro);
+                System.out.println(air.toString());
+            } catch (IllegalArgumentException e) {
+                //e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+        }
+
+    }
+
+}
