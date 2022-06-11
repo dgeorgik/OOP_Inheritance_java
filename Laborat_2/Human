@@ -1,0 +1,36 @@
+public class Human {
+    private String firstName;
+    private String lastName;
+    public Human (String first, String last) throws IllegalArgumentException {
+        setFirstName(first);
+        setLastName(last);
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    private void setFirstName(String firstName) throws IllegalArgumentException {
+        String[] firstNameSplit = firstName.split("");
+        if (!firstNameSplit[0].equals(firstNameSplit[0].toUpperCase())) {
+            throw new IllegalArgumentException("Expected upper case letter! Argument: firstName");
+
+        } else if (firstName.length() < 4) {
+            throw new IllegalArgumentException("Expected length at least 4 symbols! Argument: firstName");
+        }
+        this.firstName = firstName;
+
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    protected void setLastName(String lastName) throws IllegalArgumentException {
+        String[] lastNameSplit = lastName.split("");
+        //lastName.substring(0, 1).toUpperCase().equals(lastName.substring(0, 1))
+        if (!lastNameSplit[0].equals(lastNameSplit[0].toUpperCase())) {
+            throw new IllegalArgumentException("Expected upper case letter! Argument: lastName");
+        } else if (firstName.length() < 3) {
+            throw new IllegalArgumentException("Expected length at least 3 symbols! Argument: lastName");
+        }
+        this.lastName = lastName;
+    }
+
+}
