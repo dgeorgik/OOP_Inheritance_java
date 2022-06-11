@@ -1,0 +1,44 @@
+public class Knight extends Hero {
+    protected int strength;
+    protected int impactForce;
+    public Knight (String name, int lvl, int str, int force) {
+        super(name, lvl);
+        setStrength(str);
+        setImpactForce(force);
+    }
+    protected boolean fight() {
+        if (strength >= impactForce) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public String action() {
+        if (fight()) {
+            strength = strength - impactForce;
+            return "" + getUsername() + " fight with force " + getImpactForce();
+        } else {
+            return "" + getUsername() + " has no more strength";
+        }
+
+    }
+    protected int getStrength() {
+        return strength;
+    }
+    protected void setStrength(int strength) throws IllegalArgumentException {
+        if (strength < 0 || strength > 100) {
+            throw new IllegalArgumentException("Wrong value to knight's strength");
+        }
+        this.strength = strength;
+    }
+    protected int getImpactForce() {
+        return impactForce;
+    }
+    protected void setImpactForce(int impactForce) throws IllegalArgumentException {
+        if (impactForce < 0 || impactForce > strength) {
+            throw new IllegalArgumentException("Wrong value to knight's force impact");
+        }
+        this.impactForce = impactForce;
+    }
+
+}
