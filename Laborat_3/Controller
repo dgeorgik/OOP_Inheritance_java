@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Controller {
+
+    public static void main(String[] args) {
+        try {
+            Scanner scan = new Scanner(System.in);
+            String[] preArr = scan.nextLine().split(" ");
+            int[] arr = new int[preArr.length];
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = Integer.parseInt(preArr[i]);
+            }
+            switch(arr.length) {
+
+                default:
+                    Polygon poly = new Polygon(arr);
+                    System.out.println(poly.toString());
+                    break;
+
+                case 1:
+                    Circle circle = new Circle(arr);
+                    System.out.println(circle.toString());
+                    break;
+
+                case 3:
+                    Triangle trian = new Triangle(arr);
+                    System.out.println(trian.toString());
+                    break;
+
+                case 4:
+                    if (arr[0] == arr[1] && arr[0] == arr[2] && arr[0] == arr[3]) {
+                        Rhombus rhomb = new Rhombus(arr);
+                        System.out.println(rhomb.toString());
+                        break;
+                    }
+
+                    boolean firstPair = false;
+                    boolean secondPair = false;
+                    ArrayList <Integer> copy = new ArrayList<Integer>();
+                    for (int i = 0; i < 4; i++) {
+                        copy.add(arr[i]);
+                    }
+                    for (int i = 1; i < 4; i++) {
+                        if (arr[0]==copy.get(i)) {
+                            firstPair =true;
+                            copy.remove(i);
+                            copy.remove(0);
+                            break;
+                        }
+                    }
+                    if (copy.get(0) == copy.get(1)) {
+                        secondPair = true;
+                    }
+                    if (firstPair && secondPair) {
+                        Parallelogram paral = new Parallelogram(arr);
+                        System.out.println(paral.toString());
+                        break;
+                    } else {
+                        Quadrilateral quad = new Quadrilateral(arr);
+                        System.out.println(quad.toString());
+                        break;
+                    }
+            }
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            //e.printStackTrace();
+        }
+    }
+}
