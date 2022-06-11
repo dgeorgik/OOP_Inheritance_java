@@ -1,0 +1,44 @@
+public class Wizard extends Hero {
+    protected int mana;
+    protected int spellPower;
+    public Wizard (String name, int lvl, int mana, int power) {
+        super(name, lvl);
+        setMana(mana);
+        setSpellPower(power);
+    }
+    protected boolean spell() {
+        if (spellPower <= mana) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public String action() {
+        if (spell()) {
+            mana = mana - spellPower;
+            return "" + getUsername() + " spell with power " + getSpellPower();
+        } else {
+            return "" + getUsername() + " has no more mana";
+        }
+
+    }
+    protected int getMana() {
+        return mana;
+    }
+    protected void setMana(int mana) throws IllegalArgumentException {
+        if (mana < 0 || mana > 100) {
+            throw new IllegalArgumentException("Wrong value to wizard's mana");
+        }
+        this.mana = mana;
+    }
+    protected int getSpellPower() {
+        return spellPower;
+    }
+    protected void setSpellPower(int spellPower) throws IllegalArgumentException {
+        if (spellPower < 0 || spellPower > mana) {
+            throw new IllegalArgumentException("Wrong value to wizard's spell power");
+        }
+        this.spellPower = spellPower;
+    }
+
+}
